@@ -25,7 +25,7 @@ jobs:
       - name: Build
         id: build
         run: |
-             hugo build -D
+             hugo
              echo ::set-output name=exit_code::$?
 
       - name: Merge me!
