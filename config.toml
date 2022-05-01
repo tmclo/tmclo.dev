@@ -1,6 +1,6 @@
 baseURL = 'https://tmclo.dev/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'tmclo.dev'
 summaryLength=20
 theme = "shell"
 
@@ -9,7 +9,7 @@ copyright = "Copyright (c) 2022, tmclo.dev"
 
 [params]
     name = "tmclo.dev website"
-    description = "Welcome to my tmclo.dev"
+    description = "Welcome to tmclo.dev"
 
     github_user = "tmclo"
     github_repo = "https://github.com/tmclo/tmclo.dev"
