@@ -1,9 +1,6 @@
 name: Hugo Test
 
-on:
-  push:
-    branches:
-      - dev
+on: [push]
 
 jobs:
   deploy:
