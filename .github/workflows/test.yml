@@ -23,4 +23,13 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo build -D
+        id: build
+        run: |
+             hugo build -D
+             echo ::set-output name=exit_code::$?
+
+      - name: Merge me!
+        if: steps.build.outputs.exit_code == 0
+        uses: ridedott/merge-me-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
