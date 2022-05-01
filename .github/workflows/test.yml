@@ -1,6 +1,9 @@
 name: Hugo Test
 
-on: [push]
+on:
+  push:
+    branches:
+      - dev
 
 jobs:
   deploy:
@@ -25,8 +28,11 @@ jobs:
              hugo
              echo ::set-output name=exit_code::$?
 
-      - name: Merge me!
-        if: steps.build.outputs.exit_code == 0
-        uses: ridedott/merge-me-action@v2
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@v0.15.2"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
