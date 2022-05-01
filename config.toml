@@ -1,0 +1,27 @@
+baseURL = 'http://localhost/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+summaryLength=20
+theme = "shell"
+
+author = "Tom McLoughlin"
+copyright = "Copyright (c) 2022, tmclo.dev"
+
+[params]
+    name = "tmclo.dev website"
+    description = "Welcome to my tmclo.dev"
+
+    github_user = "tmclo"
+    github_repo = "https://github.com/tmclo/tmclo.dev"
+    github_banner = false
+
+    favicon = "favicon.ico"
+    menuMore = "Show more"
+    readMore = "Read more"
+
+[build]
+    writeStats = true
+
+[markup]
+    [markup.highlight]
+        style = "dracula"
