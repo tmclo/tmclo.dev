@@ -2,16 +2,15 @@
   "comments": {
     "dependencies": {},
     "devDependencies": {
-      "@fullhuman/postcss-purgecss": "project",
-      "@tailwindcss/aspect-ratio": "project",
-      "@tailwindcss/forms": "project",
-      "@tailwindcss/line-clamp": "project",
-      "@tailwindcss/typography": "project",
-      "autoprefixer": "project",
-      "postcss": "project",
-      "postcss-cli": "project",
-      "postcss-purgecss": "shell",
-      "tailwindcss": "project"
+      "@fullhuman/postcss-purgecss": "^4.x",
+      "@tailwindcss/aspect-ratio": "^0.x",
+      "@tailwindcss/forms": "^0.x",
+      "@tailwindcss/line-clamp": "^0.x",
+      "@tailwindcss/typography": "^0.5.0",
+      "autoprefixer": "^10.x",
+      "postcss": "^8.x",
+      "postcss-cli": "^9.x",
+      "tailwindcss": "^3.x"
     }
   },
   "dependencies": {},
@@ -24,7 +23,6 @@
     "autoprefixer": "^10.x",
     "postcss": "^8.x",
     "postcss-cli": "^9.x",
-    "postcss-purgecss": "^2.0.3",
     "tailwindcss": "^3.x"
   },
   "license": "MIT",
