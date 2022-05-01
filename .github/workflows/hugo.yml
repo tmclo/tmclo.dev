@@ -16,6 +16,11 @@ jobs:
           submodules: true 
           fetch-depth: 0
 
+      - name: Setup NPM/Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -25,6 +30,7 @@ jobs:
       - name: Build
         id: build
         run: |
+             npm install
              hugo
              echo ::set-output name=exit_code::$?
 
