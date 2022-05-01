@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{ range .Pages }}
+    <article class="px-6 mx-auto mb-16 prose text-white justify-self-center sm:px-4 md:px-0 lg:prose-lg prose-invert">
+        <h1 class="post-border"><a href="{{ .Permalink }}" class="text-white block py-4 no-underline hover:text-green-500 no-prose">{{ .Title | markdownify }}</a></h1>
+        <!-- {{ .Content }} -->
+        <p class="text-gray-500" style="margin-top: -2.3333rem;">{{ .Date.Format "2006-01-02" }} :: {{ .Params.Author }}</p>
+        <div class="post-content">
+            {{ if .Params.showFullContent }}
+              {{ .Content }}
+            {{ else if .Description }}
+              {{ .Description | markdownify }}
+            {{ else }}
+              {{ .Summary | markdownify }}
+            {{ end }}
+          </div>
+          {{ if not .Params.showFullContent }}
+          <div>
+            <a class="read-more button no-underline hover:underline text-green-500 text-sm"
+              href="{{.RelPermalink}}">{{ $.Site.Params.ReadMore }} →</a>
+          </div>
+          {{ end }}
+    </article>
+{{ end }}
+{{ end }}

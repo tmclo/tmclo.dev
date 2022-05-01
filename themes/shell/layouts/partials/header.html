@@ -1,0 +1,55 @@
+<header class="w-full">
+
+<nav class="bg-gray-800 shadow-lg">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-7">
+          <!-- Website Logo -->
+          <div style="margin-right: 1rem;">
+            <a href="{{ .Site.Home.Permalink }}" class="flex items-center py-4 px-2">
+              <span class="left-10 text-lg font-semibold text-green-500">> Tom McLoughlin</span><div class="blinker text-green-500"></div> <!-- {{ .Site.Title }} -->
+            </a>
+          </div>
+          <!-- Primary Navbar items -->
+          <div class="hidden items-center space-x-1 md:flex">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent "main" . }}border-b-4 border-green-500 text-green-500{{else}} text-gray-500 hover:text-green-500{{end}} py-4 px-2 font-semibold">{{ .Name }}</a>
+            {{ end }}
+          </div>
+        </div>
+        <!-- Secondary Navbar items -->
+        <div class="hidden items-center space-x-3 md:flex">
+          <a href="https://github.com/tmclo" class="py-2 px-2 font-medium text-gray-500 transition duration-300 hover:text-green-500">GitHub</a>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <button class="mobile-menu-button outline-none">
+            <svg class="h-6 w-6 text-gray-500 hover:text-green-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="mobile-menu hidden">
+      <ul class="">
+        <li class="active"><a href="index.html" class="block bg-green-500 px-2 py-4 text-sm font-semibold text-white">Home</a></li>
+        {{ range .Site.Sections }}
+            <li>
+                <a href="{{ .Permalink }}" class="block px-2 py-4 text-sm text-gray-500 transition duration-300 hover:bg-green-500">{{ .Title }}</a>
+            </li>
+        {{ end }}
+      </ul>
+    </div>
+    <script>
+      const btn = document.querySelector("button.mobile-menu-button");
+      const menu = document.querySelector(".mobile-menu");
+
+      btn.addEventListener("click", () => {
+      	menu.classList.toggle("hidden");
+      });
+    </script>
+  </nav>
+</header>
