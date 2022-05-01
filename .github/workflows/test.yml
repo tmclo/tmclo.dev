@@ -27,13 +27,3 @@ jobs:
         run: |
              hugo
              echo ::set-output name=exit_code::$?
-
-  automerge:
-    runs-on: ubuntu-latest
-    steps:
-      - id: automerge
-        name: automerge
-        if: steps.build.outputs.exit_code == 0
-        uses: "pascalgn/automerge-action@v0.15.2"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
