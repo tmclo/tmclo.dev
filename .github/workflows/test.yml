@@ -33,6 +33,7 @@ jobs:
     steps:
       - id: automerge
         name: automerge
+        if: steps.build.outputs.exit_code == 0
         uses: "pascalgn/automerge-action@v0.15.2"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
