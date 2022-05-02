@@ -27,14 +27,13 @@ jobs:
           hugo-version: '0.98.0'
           ## extended: true
 
-      - name: Set production sysenv
-        run: export HUGO_ENVIRONMENT="production"
+      - name: npm install
+        run: npm install
 
-      - name: Build
+      - name: Build minified
         id: build
         run: |
-             npm install
-             hugo
+             hugo --environment production --minify
              echo ::set-output name=exit_code::$?
 
       - name: Install SSH Key
