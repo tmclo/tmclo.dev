@@ -28,7 +28,9 @@ jobs:
           ## extended: true
 
       - name: npm install
-        run: npm install
+        run: |
+             npm install purgecss-cli -g
+             npm install autoprefixer -g 
 
       - name: Build minified
         id: build
