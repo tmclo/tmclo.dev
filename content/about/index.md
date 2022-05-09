@@ -66,7 +66,7 @@ list my skills & experiences below.
 - **IIS**
 - **cPanel / WHM**
 - **KVM, Xen, VMware**
-- **I'll be adding to this list further soon.**
+- **And much more**
 
 Please checkout my [**GitHub**](https://github.com/tmclo) for some samples of projects I've been working 
 on.
