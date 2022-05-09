@@ -2,6 +2,7 @@
 author: Tom
 title: Tom McLoughlin (@tmclo)
 linkTitle: "Home"
+description: "Welcome to TMCLO.DEV, I'm a Linux Enthusiast/Hobby Programmer"
 date: 2019-05-15
 menu:
   main:
