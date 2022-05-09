@@ -73,6 +73,8 @@ on.
 
 ## Certifications
 - **cPanel Certified Administrator (CWA)**
+- **Working towards CWSA-1 & CWSA-2**
+- **Working towards CompTIA A+,ITF+,Linux+**
 
 I can be reached via email at me(at)tmclo(dot)dev
 
