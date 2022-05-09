@@ -78,6 +78,6 @@ on.
 ## Certifications
 - **cPanel Certified Administrator (CWA)**
 
-I can also be reached via email at me(at)tmclo(dot)dev
+I can be reached via email at me(at)tmclo(dot)dev
 
 Thank you for visiting my website! :)
