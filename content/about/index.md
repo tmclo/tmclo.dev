@@ -23,16 +23,7 @@ for example,
 Ubuntu/Debian, CentOS/Fedora/RHEL & Arch Linux, I have also had experience working with *BSD systems and 
 some mild experience working with Windows Server.
 
-After about 6 years of building on my hobby of working with Linux systems I'd built an extensive 
-knowledge of things such as:
-
-- **Web Servers** (Nginx, Apache2)
-- **FTP Servers**
-- **Docker**
-- **Linux Fundamentals**
-- **Databases** (MySQL, MariaDB, MongoDB, Postgres, Redis)
-- **Server monitoring**
-- **And much more!**
+After about 6 years of building on my hobby of working with Linux systems I'd built an extensive knowledge of various fundamentals about the underlying software behind many of the most popular technology stacks used in the world; I was fascinated by this.
 
 After developing a complete understanding of managing and working with Linux systems I believed it was 
 time to progress in my journey and begin to study a few high-level programming languages,
@@ -70,6 +61,11 @@ list my skills & experiences below.
 - **Working with APIs**
 - **LDAP**
 - **Managing Linux networking** (working with IPv6, routing, vlans, bridge networks, etc)
+- **Windows Server 2016**
+- **Active Directory**
+- **IIS**
+- **cPanel / WHM**
+- **KVM, Xen, VMware**
 - **I'll be adding to this list further soon.**
 
 Please checkout my [**GitHub**](https://github.com/tmclo) for some samples of projects I've been working 
