@@ -3,6 +3,7 @@ author: Tom
 title: About
 linkTitle: "About"
 date: 2019-05-15
+description: "I'm Tom and I'm a self-taught programmer and Linux enthusiast"
 menu:
   main:
     weight: 2
@@ -73,6 +74,9 @@ list my skills & experiences below.
 
 Please checkout my [**GitHub**](https://github.com/tmclo) for some samples of projects I've been working 
 on.
+
+## Certifications
+- **cPanel Certified Administrator (CWA)**
 
 I can also be reached via email at me(at)tmclo(dot)dev
 
