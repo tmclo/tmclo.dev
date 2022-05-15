@@ -24,7 +24,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.98.0'
+          hugo-version: 'latest'
           ## extended: true
 
       - name: npm install
@@ -37,6 +37,7 @@ jobs:
         id: build
         run: |
              hugo --environment production --minify
+             cat hugo_stats.json
              echo ::set-output name=exit_code::$?
 
       - name: Install SSH Key
