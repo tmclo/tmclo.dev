@@ -37,7 +37,6 @@ jobs:
         id: build
         run: |
              hugo --environment production --minify
-             cat hugo_stats.json
              echo ::set-output name=exit_code::$?
 
       - name: Install SSH Key
