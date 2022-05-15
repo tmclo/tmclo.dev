@@ -2,6 +2,7 @@ baseURL = 'https://tmclo.dev/'
 languageCode = 'en-us'
 title = 'tmclo.dev'
 summaryLength=20
+disableLiveReload: true
 theme = "shell"
 
 author = "Tom McLoughlin"
