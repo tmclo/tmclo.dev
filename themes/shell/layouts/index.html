@@ -1,7 +1,9 @@
 {{ define "main" }}
+<canvas id="bgCanvas"></canvas>
 <article class="text-center text-white content-evenly">
     <h1 class="text-5xl welcome-headline text-white px-2 py-4">{{ .Title }}</h1>
 
     {{ .Content }}
 </article>
+<script async defer src="/assets/animate.js"></script>
 {{ end }}
