@@ -1,11 +1,10 @@
 {{ define "main" }}
-<canvas id="bgCanvas">
+<canvas id="bgCanvas"></canvas>
 <article class="text-center text-white content-evenly">
     <h1 class="text-5xl welcome-headline text-white px-2 py-4">{{ .Title }}</h1>
 
     {{ .Content }}
 </article>
-</canvas>
 {{ $js := resources.Get "js/animate.js" }}
 <script async defer src="{{ $js.RelPermalink }}"></script>
 {{ end }}
