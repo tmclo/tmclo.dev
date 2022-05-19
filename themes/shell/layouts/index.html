@@ -6,6 +6,6 @@
     {{ .Content }}
 </article>
 </canvas>
-{{ $js := resources.Get "js/main.js" }}
+{{ $js := resources.Get "js/main.js" | js.Build "main.js" }}
 <script async defer src="{{ $js.RelPermalink }}"></script>
 {{ end }}
