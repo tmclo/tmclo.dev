@@ -1,6 +1,6 @@
 ---
 author: Tom
-title: Tom McLoughlin (@tmclo)
+title: Tom McLoughlin (<div class="text-green-500">@tmclo</div>)
 linkTitle: "Home"
 description: "Welcome to TMCLO.DEV, I'm a Linux Enthusiast/Hobby Programmer"
 date: 2019-05-15
