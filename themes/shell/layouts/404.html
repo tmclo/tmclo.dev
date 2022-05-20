@@ -3,8 +3,8 @@
         {{ $imagewebp := resources.Get "img/404.webp" }}
         {{ $imagejpg := resources.Get "img/404.jpg" }}
         <picture>
-            <source src="{{ $imagewebp.RelPermalink }}" type="image/webp" width="{{ $imagewebp.Width }}" height="{{ $imagewebp.Height }}">
-            <img src="{{ $imagejpg.RelPermalink }}" alt="404 Not Found" width="{{ $imagejpg.Width }}" height="{{ $imagejpg.Height }}">
+            <source src="{{ $imagewebp.RelPermalink }}" type="image/webp">
+            <img src="{{ $imagejpg.RelPermalink }}" alt="404 Not Found">
         </picture>
     </div>
 {{ end }}
