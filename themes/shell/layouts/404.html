@@ -2,7 +2,7 @@
     <div class="flex-auto content-evenly items-center h-screen">
         {{ $imagewebp := resources.Get "img/404.webp" }}
         {{ $imagejpg := resources.Get "img/404.jpg" }}
-        <picture>
+        <picture class="place-items-center">
             <source src="{{ $imagewebp.RelPermalink }}" type="image/webp">
             <img src="{{ $imagejpg.RelPermalink }}" alt="404 Not Found">
         </picture>
