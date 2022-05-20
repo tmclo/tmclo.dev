@@ -1,10 +1,10 @@
 {{ define "main" }}
-    <div class="flex-auto content-evenly items-center h-screen">
+    <section class="hero container max-w-screen-lg mx-auto pb-10 flex justify-center">
         {{ $imagewebp := resources.Get "img/404.webp" }}
         {{ $imagejpg := resources.Get "img/404.jpg" }}
         <picture class="place-items-center">
             <source class="mx-auto" src="{{ $imagewebp.RelPermalink }}" type="image/webp" width="750" height="600">
             <img class="mx-auto" src="{{ $imagejpg.RelPermalink }}" alt="404 Not Found" width="750" height="600">
         </picture>
-    </div>
+    </section>
 {{ end }}
