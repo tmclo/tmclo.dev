@@ -1,6 +1,6 @@
 +++
 title = "How to setup a HA Hugo Stack with AWS, Terraform, Ansible, Docker Swarm, Nginx, Traefik & EBS"
-date = "20-04-2022"
+date = 20-04-2022
 author = "Tom McLoughlin"
 description = "How to use Terraform and Ansible with AWS to setup a high availability Hugo blog cluster"
 +++
