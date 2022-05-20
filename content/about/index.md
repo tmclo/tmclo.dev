@@ -9,8 +9,6 @@ menu:
     weight: 2
 ---
 
-If i add this will it work?
-
 I'm Tom and I'm a self-taught NodeJS/Golang/Python/PHP & Swift programmer, with 10+ years of self-taught 
 Linux Systems Administration experience. test
 
