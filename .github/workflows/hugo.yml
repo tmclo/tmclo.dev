@@ -29,15 +29,15 @@ jobs:
 
       - name: npm install
         run: |
-             npm install
-             npm install postcss-cli -g
-             npm install autoprefixer -g 
+            npm install
+            npm install postcss-cli -g
+            npm install autoprefixer -g 
 
       - name: Build minified
         id: build
         run: |
-             hugo --environment production --minify
-             echo ::set-output name=exit_code::$?
+            hugo --environment production --minify
+            echo ::set-output name=exit_code::$?
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
