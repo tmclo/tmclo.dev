@@ -26,4 +26,4 @@ copyright = "Copyright (c) 2022, tmclo.dev"
   [markup.highlight]
     codeFences = true
     guessSyntax = false
-    style = "github"
+    style = "dracula"
