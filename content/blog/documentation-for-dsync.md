@@ -51,7 +51,7 @@ Now, it's time to setup our replicator, provided you have done the above steps o
 
 Now we're going to open the file ```/etc/dovecot/conf.d/10-master.conf```
 
-```go
+{{< highlight go >}}
 service replicator {
   process_min_avail = 1
   unix_listener replicator-doveadm {
@@ -81,7 +81,7 @@ service doveadm {
     port = 4000
   }
 }
-```
+{{< / highlight >}}
 
 Follow these steps on both mail servers and make sure the mail_replica line is configured with the IP Address of the opposite mail server, for example,
 If you're on mailserver1(1.0.0.1) you would put mailserver2(1.0.0.2), and if you're on mailserver2(1.0.0.2) you would put mailserver1(1.0.0.1)
