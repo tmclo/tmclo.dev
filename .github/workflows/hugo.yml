@@ -36,7 +36,7 @@ jobs:
       - name: Build minified
         id: build
         run: |
-            hugo --environment production --minify
+            hugo --minify
             echo ::set-output name=exit_code::$?
 
       - name: Install SSH Key
