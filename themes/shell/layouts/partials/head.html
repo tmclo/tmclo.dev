@@ -19,7 +19,7 @@
     {{- if .Site.IsServer }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
     {{ else }}
-    {{- $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+    {{- $syntax := resources.Get "css/syntax.css" -}}
+    <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
     {{ end -}}
 </head>
