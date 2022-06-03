@@ -23,6 +23,16 @@ copyright = "Copyright (c) 2022, tmclo.dev"
     writeStats = true
 
 [markup]
-    [markup.highlight]
-        style = "dracula"
-        
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'monokai'
+    tabWidth = 4
