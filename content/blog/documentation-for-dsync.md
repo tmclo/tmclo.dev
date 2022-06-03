@@ -88,7 +88,7 @@ If you're on mailserver1(1.0.0.1) you would put mailserver2(1.0.0.2), and if you
 
 Provided you have followed these steps correctly you should now be able to run restart dovecot on both servers and they should begin syncing
 
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 systemctl restart dovecot
 {{< / highlight >}}
 
@@ -128,7 +128,7 @@ plugin {
 
 You may now restart both servers, please note configuration changes I have demonstrated here must be the same on BOTH servers.
 
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 systemctl restart dovecot
 {{< / highlight >}}
 
