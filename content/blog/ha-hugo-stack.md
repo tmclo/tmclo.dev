@@ -28,9 +28,9 @@ First of all I have stored all the code for this project over at my
 [**Github**](https://github.com/tmclo/hugo-stack) so first go ahead and clone that to wherever you wish 
 on your machine
 
-```terminfo
+{{ highlight terminfo }}
 git clone https://github.com/tmclo/hugo-stack.git
-```
+{{< / highlight >}}
 
 Once you have done that, you should be able to open the `main.tf` file, we will need to potentially edit 
 a few things in here before we can setup our infrastructure
@@ -51,27 +51,27 @@ instances.
 Assuming all is in order, we're ready to start deploying our infrastructure!
 
 Run the following command to initialise Terraform,
-```terminfo
+{{ highlight terminfo }}
 terraform init
-```
+{{< / highlight >}}
 
 This command must be run in the same directory as our project, so please ensure you have a terminal 
 opened in the correct directory before hand!
 
 Next, lets check what changes we're going to make before actually potentially causing any damage, we can 
 do this using the plan command as follows,
-```terminfo
+{{ highlight terminfo }}
 terraform plan
-```
+{{< / highlight >}}
 
 Check over everything on the output of this command before continuing, we don't want to accidentally 
 destroy something we're not supposed to!
 
 Next, let's fire up the infrastructure ready for setting up our cluster!
 Run the following command and confirm when asked to do so :)
-```terminfo
+{{ highlight terminfo }}
 terraform apply
-```
+{{< / highlight >}}
 
 This might take a while but right now is the perfect time for a coffee while we wait for our 
 infrastructure to be deployed!
@@ -91,9 +91,9 @@ Once you've updated the hosts file accordingly we're ready to fire up ansible an
 setup
 
 To do this we will be running the following command
-```terminfo
+{{ highlight terminfo }}
 ansible-playbook -i hosts -u ubuntu --private-key "~/.ssh/id_ed25519" docker-swarm.yml
-```
+{{< / highlight >}}
 
 Take extra note of the `--private-key` section in this command, you will need to update that with the 
 correct location of your SSH PRIVATE KEY.
@@ -104,9 +104,9 @@ the connections required for the swarm, we don't even need to login!
 
 Now that ansible has completed, you should be able to login to the first (manager) node and type the 
 following command:
-```terminfo
+{{ highlight terminfo }}
 docker node ls
-```
+{{< / highlight >}}
 
 Provided that ansible has successfully setup the swarm you should see all the nodes that we created 
 earlier listed in the output, this means our swarm is working!
@@ -120,9 +120,9 @@ node for us and setup the entire Hugo cluster, to do this we first need to modif
 However to speed things up, we can just run the following command first leaving only two things to 
 update in our docker compose file,
 
-```terminfo
+{{ highlight terminfo }}
 sed -i 's/example.com/new-domain.com/g' docker-compose.yml
-```
+{{< / highlight >}}
 
 This command looks for the occurance of "example.com" and changes it to our actual domain.
 
@@ -136,9 +136,9 @@ Look for the following,
 
 Once these are updated we're ready to deploy our cluster by running the following command,
 
-```terminfo
+{{ highlight terminfo }}
 ansible-playbook -i hosts -u ubuntu --private-key "~/.ssh/id_ed25519" docker-deploy.yml
-```
+{{< / highlight >}}
 
 Once that's finished you should be left with a fully functional Hugo stack on your brand new docker 
 swarm cluster!
