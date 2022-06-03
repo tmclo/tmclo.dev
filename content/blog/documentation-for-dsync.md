@@ -12,14 +12,14 @@ Anyway, whilst looking around for solutions to the issue of replication with dov
 They call it Dsync and it's surprisingly simple to setup and get working, however the documentation on the other hand isn't very clear and easy to understand, there's not really any form of information on using this alongside a database, and since having a replicated database on both the mail servers is probably the best way to go around managing user accounts for a cluster like this, I started right away with setting up MariaDB replication so both the mail servers have a locally hosted database server with their own replica of the data; this means accessing the database for authentication is as fast as it can be for a setup of this kind, now the database went a breeze and was simple to setup, however once moving onto Dsync the documentation doesn't show that you require a UserDB, PassDB, Password_query, User_query and iterate_query, however I'm going to list a few configuration snippets in order to help demonstrate how you can achieve replication on your own mail servers.
 
 To start off with, we need to enable the replication & notify plugins in ```/etc/dovecot/conf.d/10-mail.conf```
-{{ highlight go }}
+{{< highlight go >}}
 mail_plugins = $mail_plugins notify replication
 {{< / highlight >}}
 
 Now save that file and open up ```/etc/dovecot/conf.d/auth-sql.conf.ext```
 
 We're going to first setup the ```passdb``` block in this file as such:
-{{ highlight go }}
+{{< highlight go >}}
 passdb {
     driver = sql
     args = /etc/dovecot/dovecot-sql.conf.ext
@@ -27,7 +27,7 @@ passdb {
 {{< / highlight >}}
 
 Now we need to setup the ```userdb``` block in the same file as such:
-{{ highlight go }}
+{{< highlight go >}}
 userdb {
     driver = sql
     args = /etc/dovecot/dovecot-sql.conf.ext
@@ -39,7 +39,7 @@ Take note that we also may be replacing the "static" userdb configuration you ma
 You may now save the file and open up the file ```/etc/dovecot/dovecot-sql.conf.ext```
 
 We're going to make check for the following lines and make sure they match the following:
-{{ highlight go }}
+{{< highlight go >}}
 password_query = SELECT email as user, password FROM virtual_users WHERE email='%u';
 user_query = SELECT 'vmail' AS uid, 'vmail' AS 'gid', '/var/mail/vhosts/%d/%n' AS home;
 iterate_query = SELECT email AS user FROM virtual_users;
@@ -51,7 +51,7 @@ Now, it's time to setup our replicator, provided you have done the above steps o
 
 Now we're going to open the file ```/etc/dovecot/conf.d/10-master.conf```
 
-{{< highlight json >}}
+{{< highlight go >}}
 service replicator {
   process_min_avail = 1
   unix_listener replicator-doveadm {
@@ -99,7 +99,7 @@ To setup SSL for our already running cluster, all we need to do is change the li
 
 Just add the following lines to the config on both mail servers and restart, please note you must already have a running SSL configuration for your mail servers before attempting this as we will be using the same certificates that are being used for regular IMAPS
 
-{{ highlight go }}
+{{< highlight go >}}
 service doveadm {
   inet_listener {
     port = 4000
@@ -109,7 +109,7 @@ service doveadm {
 {{< / highlight >}}
 
 Now once we have done that, we just need to change the following block a little higher up in the same file,
-{{ highlight go }}
+{{< highlight go >}}
 plugin {
   replication_sync_timeout = 2
   mail_replica = tcp:REPLACE WITH THE IP OF YOUR OTHER EMAIL SERVER:4000 # CHANGE THIS LINE
@@ -119,7 +119,7 @@ plugin {
 We will be adding a single character to this line where we will be changing `tcp` to `tcps`
 
 For example:
-{{ highlight go }}
+{{< highlight go >}}
 plugin {
   replication_sync_timeout = 2
   mail_replica = tcps:REPLACE WITH THE IP OF YOUR OTHER EMAIL SERVER:4000 # CHANGE THIS LINE
