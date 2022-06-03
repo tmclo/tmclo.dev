@@ -51,7 +51,7 @@ Now, it's time to setup our replicator, provided you have done the above steps o
 
 Now we're going to open the file ```/etc/dovecot/conf.d/10-master.conf```
 
-```java
+```go
 service replicator {
   process_min_avail = 1
   unix_listener replicator-doveadm {
