@@ -21,12 +21,3 @@ copyright = "Copyright (c) 2022, tmclo.dev"
 
 [build]
     writeStats = true
-
-PygmentsCodeFences = true
-PygmentsStyle = "monokai"
-
-[markup]
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = false
-    style = 'monokai'
