@@ -28,7 +28,7 @@ First of all I have stored all the code for this project over at my
 [**Github**](https://github.com/tmclo/hugo-stack) so first go ahead and clone that to wherever you wish 
 on your machine
 
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 git clone https://github.com/tmclo/hugo-stack.git
 {{< / highlight >}}
 
@@ -51,7 +51,7 @@ instances.
 Assuming all is in order, we're ready to start deploying our infrastructure!
 
 Run the following command to initialise Terraform,
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 terraform init
 {{< / highlight >}}
 
@@ -60,7 +60,7 @@ opened in the correct directory before hand!
 
 Next, lets check what changes we're going to make before actually potentially causing any damage, we can 
 do this using the plan command as follows,
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 terraform plan
 {{< / highlight >}}
 
@@ -69,7 +69,7 @@ destroy something we're not supposed to!
 
 Next, let's fire up the infrastructure ready for setting up our cluster!
 Run the following command and confirm when asked to do so :)
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 terraform apply
 {{< / highlight >}}
 
@@ -91,7 +91,7 @@ Once you've updated the hosts file accordingly we're ready to fire up ansible an
 setup
 
 To do this we will be running the following command
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 ansible-playbook -i hosts -u ubuntu --private-key "~/.ssh/id_ed25519" docker-swarm.yml
 {{< / highlight >}}
 
@@ -104,7 +104,7 @@ the connections required for the swarm, we don't even need to login!
 
 Now that ansible has completed, you should be able to login to the first (manager) node and type the 
 following command:
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 docker node ls
 {{< / highlight >}}
 
@@ -120,7 +120,7 @@ node for us and setup the entire Hugo cluster, to do this we first need to modif
 However to speed things up, we can just run the following command first leaving only two things to 
 update in our docker compose file,
 
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 sed -i 's/example.com/new-domain.com/g' docker-compose.yml
 {{< / highlight >}}
 
@@ -136,7 +136,7 @@ Look for the following,
 
 Once these are updated we're ready to deploy our cluster by running the following command,
 
-{{ highlight terminfo }}
+{{< highlight terminfo >}}
 ansible-playbook -i hosts -u ubuntu --private-key "~/.ssh/id_ed25519" docker-deploy.yml
 {{< / highlight >}}
 
