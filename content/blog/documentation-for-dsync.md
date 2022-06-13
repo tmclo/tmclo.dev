@@ -14,7 +14,7 @@ They call it Dsync and it's surprisingly simple to setup and get working, howeve
 To start off with, we need to enable the replication & notify plugins in ```/etc/dovecot/conf.d/10-mail.conf```
 {{< highlight go >}}
 mail_plugins = $mail_plugins notify replication
-{{< / highlight >}}
+{{</highlight>}}
 
 Now save that file and open up ```/etc/dovecot/conf.d/auth-sql.conf.ext```
 
@@ -24,7 +24,7 @@ passdb {
     driver = sql
     args = /etc/dovecot/dovecot-sql.conf.ext
 }
-{{< / highlight >}}
+{{</highlight>}}
 
 Now we need to setup the ```userdb``` block in the same file as such:
 {{< highlight go >}}
@@ -32,7 +32,7 @@ userdb {
     driver = sql
     args = /etc/dovecot/dovecot-sql.conf.ext
 }
-{{< / highlight >}}
+{{</highlight>}}
 
 Take note that we also may be replacing the "static" userdb configuration you may already have, if you have it here, delete it as we are going to be using the new "sql" driver configuration for this block.
 
@@ -43,7 +43,7 @@ We're going to make check for the following lines and make sure they match the f
 password_query = SELECT email as user, password FROM virtual_users WHERE email='%u';
 user_query = SELECT 'vmail' AS uid, 'vmail' AS 'gid', '/var/mail/vhosts/%d/%n' AS home;
 iterate_query = SELECT email AS user FROM virtual_users;
-{{< / highlight >}}
+{{</highlight>}}
 
 You must edit these lines to fit the structure of your database accordingly.
 
@@ -71,7 +71,7 @@ service aggregator {
 
 plugin {
   replication_sync_timeout = 2
-  mail_replica = tcp:REPLACE WITH THE IP OF YOUR OTHER EMAIL SERVER:4000 # CHANGE THIS LINE
+  mail_replica = tcp:mail1.example.com:4000 # CHANGE THIS LINE
 }
 
 doveadm_password = supErSeCreTPaS$w0RD123 # change this
@@ -81,16 +81,16 @@ service doveadm {
     port = 4000
   }
 }
-{{< / highlight >}}
+{{</highlight>}}
 
-Follow these steps on both mail servers and make sure the mail_replica line is configured with the IP Address of the opposite mail server, for example,
+Follow these steps on both mail servers and make sure the mail_replica line is configured with the hostname of the opposite mail server, for example,
 If you're on mailserver1(1.0.0.1) you would put mailserver2(1.0.0.2), and if you're on mailserver2(1.0.0.2) you would put mailserver1(1.0.0.1)
 
 Provided you have followed these steps correctly you should now be able to run restart dovecot on both servers and they should begin syncing
 
 {{< highlight terminfo >}}
 systemctl restart dovecot
-{{< / highlight >}}
+{{</highlight>}}
 
 Now this is perfect because our mail servers are synchronising however, we're missing something VERY important, and that's SSL,
 as it's very risky to run this configuration and have our mail servers communicate sensitive information on unencrypted connections.
@@ -112,7 +112,7 @@ Now once we have done that, we just need to change the following block a little 
 {{< highlight go >}}
 plugin {
   replication_sync_timeout = 2
-  mail_replica = tcp:REPLACE WITH THE IP OF YOUR OTHER EMAIL SERVER:4000 # CHANGE THIS LINE
+  mail_replica = tcp:mail1.example.com:4000 # CHANGE THIS LINE, USE THE HOSTNAME IN SSL CERT
 }
 {{< / highlight >}}
 
@@ -122,7 +122,7 @@ For example:
 {{< highlight go >}}
 plugin {
   replication_sync_timeout = 2
-  mail_replica = tcps:REPLACE WITH THE IP OF YOUR OTHER EMAIL SERVER:4000 # CHANGE THIS LINE
+  mail_replica = tcps:mail1.example.com:4000 # CHANGE THIS LINE, USE HOSTNAME IN SSL CERT
 }
 {{< / highlight >}}
 
