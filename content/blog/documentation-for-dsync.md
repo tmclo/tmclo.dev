@@ -210,4 +210,26 @@ I'd recommend setting up a shell script and having that run the above cerbot com
 
 You should now be able to restart dovecot on all the machines in the cluster and have no issues with SSL
 
+# Out of Memory
+
+{{< highlight terminfo >}}
+dovecot: replicator: Panic: data stack: Out of memory when allocating 268435496 bytes
+dovecot: replicator: Error: Raw backtrace: #0 test_subprocess_fork........
+{{</highlight>}}
+
+If you're receiving this error and have struggled googling for a solution, even tried vsz_limit on the replicator service, etc.
+Well congratulations, you've found a bug!
+
+However, luckily you also found my blog, and I have the solution for you!
+
+The solution here is to just comment out `replication_sync_timeout`, I'm not too sure why this stops this error from happening or what kind of memory leak is going on with the timeout, however it is a viable solution that works, hopefully they will fix this in the future!
+
+{{< highlight terminfo >}}
+plugin {
+  #replication_sync_timeout = 30
+  mail_replica = tcps:mail2.example.com:4000
+}
+{{</highlight>}}
+
+
 I hope this helped, thanks for reading!
