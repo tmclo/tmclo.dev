@@ -134,4 +134,80 @@ systemctl restart dovecot
 
 Now check your ```/var/log/mail.log``` and you should see that mail is beginning to sync over SSL
 
+# Using LetsEncrypt??
+Dovecot Dsync can have issues when using LetsEncrypt certificates, as the certificates need to include each server you use in your cluster.
+
+For example say we have two servers in our mail cluster,
+
+1.0.0.1 (mail1.example.com)
+1.0.0.2 (mail2.example.com)
+
+Our LetsEncrypt certificate will need to include the following domains in the certificate, as such:
+
+{{< highlight terminfo >}}
+certbot certonly -d mail.example.com -d mail1.example.com -d mail2.example.com
+{{</highlight>}}
+
+However whilst this command looks like it would work easily, since mail1 & mail2 sub-domains are pointing to different servers we cannot issue the certificate and have it properly validated since certbot will only run a HTTP auth server on one of our servers (our master).
+
+This is the error you would be receiving in this case:
+
+{{< highlight terminfo >}}
+Error: doveadm server disconnected before handshake: SSL certificate doesn't match expected host name mail1.example.com: did not match to any IP or DNS fields
+{{</highlight>}}
+
+## But there's a solution!
+
+If we instead use DNS Auth instead of HTTP Auth with certbot we can achieve the desired certificate including all servers in our cluster, this is also beneficial as without this we would require a multiple certificates for each server without this.
+
+To accomplish this we are going to need to have our domains setup at CloudFlare and an extension for certbot,
+
+Let's start by installing our cloudflare extension for certbot.
+
+{{< highlight terminfo >}}
+apt -y install python3-certbot-dns-cloudflare
+{{</highlight>}}
+
+Now, create a folder to store our cloudflare API key, unfortunately the cerbot extension doesn't currently support API Tokens, so we will need our Global API key in order to do this.
+
+{{< highlight terminfo >}}
+mkdir -p /etc/cloudflare/
+touch /etc/cloudflare/cloudflare.ini
+{{</highlight>}}
+
+Now we need to populate our cloudflare.ini with the API keys, just change the email and set the Global API key as such:
+
+{{< highlight terminfo >}}
+cat <<EOF > /etc/cloudflare/cloudflare.ini
+dns_cloudflare_email = tom@springsy.co.uk
+dns_cloudflare_api_key = itvjfiejfiefj example [ use global API key for now ]
+EOF
+{{</highlight>}}
+
+Now in order to keep our API keys secure we need to set appropriate permissions on them as such ->
+
+{{< highlight terminfo >}}
+chown -R root:root /etc/cloudflare/cloudflare.ini
+chmod -R 600 /etc/cloudflare/cloudflare.ini
+{{</highlight>}}
+
+That should keep our keys locked down in our system, however there is some ways available to run cerbot as a non-root user so please look into this, as it's far more secure, however I have left root here since it will be the default setup for most people.
+
+next we need to actually issue the certificates, the way I do this is as follows:
+
+{{< highlight bash >}}
+certbot certonly \                            
+--dns-cloudflare \
+--dns-cloudflare-credentials /etc/cloudflare/cloudflare.ini \
+-d mail.example.co.uk \
+-d mail1.example.co.uk \
+-d mail2.example.co.uk
+{{</highlight>}}
+
+Once you have ran that we should now have a certificate issued for all our mail sub-domains with DNS Auth (thanks cloudflare!)
+
+I'd recommend setting up a shell script and having that run the above cerbot command in a cronjob every 30 days, and then using rsync to synchronise the certificates to the other servers in our cluster.
+
+You should now be able to restart dovecot on all the machines in the cluster and have no issues with SSL
+
 I hope this helped, thanks for reading!
