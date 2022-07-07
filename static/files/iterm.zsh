@@ -109,7 +109,7 @@ if [[ -o interactive ]]; then
       # This should be a raw PS1 without iTerm2's stuff. It could be changed during command
       # execution.
       ITERM2_PRECMD_PS1="$PS1"
-      ITERM2_SHOULD_DECORATE_PROMPT=""
+      ITERM2_SHOULD_DECORATE_PROMPT="0"
 
       # Add our escape sequences just before the prompt is shown.
       # Use ITERM2_SQUELCH_MARK for people who can't mdoify PS1 directly, like powerlevel9k users.
@@ -122,7 +122,7 @@ if [[ -o interactive ]]; then
       else
         PREFIX="%{$(iterm2_prompt_mark)%}"
       fi
-      PS1="$PREFIX$PS1%{$(iterm2_prompt_end)%}"
+      PS1="$PS1%{$(iterm2_prompt_end)%}"
       ITERM2_DECORATED_PS1="$PS1"
     }
 
@@ -133,7 +133,7 @@ if [[ -o interactive ]]; then
         iterm2_before_cmd_executes
         if [ "$PS1" != "${ITERM2_DECORATED_PS1-}" ]; then
           # PS1 changed, perhaps in another precmd. See issue 9938.
-          ITERM2_SHOULD_DECORATE_PROMPT="1"
+          ITERM2_SHOULD_DECORATE_PROMPT="0"
         fi
       fi
 
