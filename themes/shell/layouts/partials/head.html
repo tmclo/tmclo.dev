@@ -14,7 +14,7 @@
     <meta name="author" content="{{ .Params.Author}}" />
     {{ end -}}
     {{ hugo.Generator }}
-    <meta name="abuseipdb-verification" content="4YHS2dzp" />
+
     {{- $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
     {{- if .Site.IsServer }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
