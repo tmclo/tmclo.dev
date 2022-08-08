@@ -179,7 +179,7 @@ Now we need to populate our cloudflare.ini with the API keys, just change the em
 
 {{< highlight terminfo >}}
 cat <<EOF > /etc/cloudflare/cloudflare.ini
-dns_cloudflare_email = mail@example.com
+dns_cloudflare_email = tom@springsy.co.uk
 dns_cloudflare_api_key =  CF GLOBAL API KEY HERE
 EOF
 {{</highlight>}}
