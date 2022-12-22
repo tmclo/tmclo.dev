@@ -9,5 +9,5 @@ menu:
     weight: 1
 ---
 
-Hey, Welcome to my website, I'm a Linux Enthusiast/Hobby Programmer, check out some of my blog posts, 
+Hey, I'm tom, a Linux Enthusiast/Hobby Programmer, check out some of my blog posts, 
 about page or [github](https://github.com/tmclo) to learn more!
