@@ -50,4 +50,4 @@ jobs:
 
       - name: Deploy with rsync
         if: steps.build.outputs.exit_code == 0
-        run: rsync -avz -e 'ssh -p 2222' --rsync-path="sudo rsync" ./public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/tmclo/public_html
+        run: rsync -avz ./public/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/tmclo/public_html
