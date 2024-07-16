@@ -65,16 +65,11 @@ list my skills & experiences below.
 - **Active Directory**
 - **IIS**
 - **cPanel / WHM**
-- **KVM, Xen, VMware**
-- **And much more**
+- **KVM, Xen, VMware, Proxmox VE**
+- **BGP / Internet Routing protocols, currently run [AS204291](https://bgp.tools/as/204291)**
 
 Please checkout my [**GitHub**](https://github.com/tmclo) for some samples of projects I've been working 
 on.
-
-## Certifications
-- **cPanel Certified Administrator (CWA)**
-- **Working towards CWSA-1 & CWSA-2**
-- **Working towards CompTIA A+,ITF+,Linux+**
 
 I can be reached via email at me(at)tmclo(dot)dev
 
