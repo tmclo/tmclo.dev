@@ -50,6 +50,7 @@ list my skills & experiences below.
 - ***BSD**
 - **Docker & Kubernetes**
 - **Cloud Infrastructure** (AWS, Azure, GCP, Linode, DigitalOcean)
+- **Cloud-Init**
 - **Terraform IaC**
 - **Ansible**
 - **Programming** (Golang, NodeJS, PHP, Python, Swift5)
