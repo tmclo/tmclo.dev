@@ -1,0 +1,12 @@
+<script>
+    const workerUri = "https://tmclo-view-counter.aa2.workers.dev/";
+    const { pathname } = new URL(window.location);
+    let workerUrl = workerUri + pathname;
+    fetch(workerUrl, {method: 'GET'})
+    .then(response => response.json())
+    .then(data => {
+            // get the counter value
+            document.getElementById("my_value_page_pv").innerHTML = data.pv;
+    })
+    .catch(err => {});
+</script>
