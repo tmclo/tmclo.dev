@@ -24,16 +24,4 @@
     {{ end -}}
     {{- $syntax := resources.Get "css/syntax.css" -}}
     <link rel="stylesheet" href="{{ $syntax.RelPermalink }}">
-    <script>
-    const socket = new WebSocket("wss://tmclo-view-counter.aa2.workers.dev");
-    socket.addEventListener("open", () => {
-      console.log("Connected to the Worker");
-    });
-    socket.addEventListener("message", () => {
-      console.log("Connected to the Worker");
-    });
-    socket.addEventListener("close", () => {
-      console.log("Disconnected from the Worker");
-    });
-    </script>
 </head>
