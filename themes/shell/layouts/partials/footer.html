@@ -11,6 +11,6 @@ Http.send();
 
 Http.onreadystatechange = (e) => {
   console.log(Http.responseText)
-  data = Http.responseText
+  document.getElementById("pageviews").innerHTML = Http.responseText;
 }
 </script>
