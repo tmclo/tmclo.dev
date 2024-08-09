@@ -1,6 +1,6 @@
 ---
 author: Tom
-title: Tom McLoughlin (@tmclo)
+title: Tom McLoughlin
 linkTitle: "Home"
 description: "Welcome to TMCLO.DEV, I'm a Linux Engineer/Programmer"
 date: 2019-05-15
