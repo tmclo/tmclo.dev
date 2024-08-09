@@ -7,6 +7,11 @@
 </footer>
 <script defer src="https://umami-beta-ivory.vercel.app/script.js" data-website-id="3fc81ab3-e7c0-4b0b-9f3f-5e9fd30fa30b"></script>
 <script>
+var encEmail = "cm9vdEB0bWNsby5kZXY=";
+const form = document.getElementById("contact");
+form.setAttribute("href", "mailto:".concat(atob(encEmail)));
+</script>
+<script>
 fetch("https://view-counter-six.vercel.app/register_view")
   .then((response) => response.json())
   .then((json) => console.log(json));
