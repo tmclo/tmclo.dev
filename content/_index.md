@@ -14,9 +14,9 @@ about page or [github](https://github.com/tmclo) to learn more!
 
 {{< rawhtml >}}
 <div style="display:flex;justify-content:center;align-items:center;">
-  <a href="https://github.com/tmclo"><i class="p-2 fa-brands fa-github"></i></a>
-  <a href="https://git.pinguin.uk/pinguin"><i class="p-2 fa-brands fa-square-git"></i></a>
-  <a href="https://www.linkedin.com/in/tmclo"><i class="p-2 fa-brands fa-linkedin-in"></i></a>
-  <a id="contact" href=""><i class="p-2 fa-regular fa-paper-plane"></i></a>
+  <a href="https://github.com/tmclo"><i class="p-4 fa-brands fa-github"></i></a>
+  <a href="https://git.pinguin.uk/pinguin"><i class="p-4 fa-brands fa-square-git"></i></a>
+  <a href="https://www.linkedin.com/in/tmclo"><i class="p-4 fa-brands fa-linkedin-in"></i></a>
+  <a id="contact" href=""><i class="p-4 fa-regular fa-paper-plane"></i></a>
 </div>
 {{< /rawhtml >}}
