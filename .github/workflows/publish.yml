@@ -1,0 +1,49 @@
+name: Hugo Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup NPM/Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.98.0'
+          ## extended: true
+
+      - name: npm install
+        run: |
+            npm install
+            npm install postcss-cli -g
+            npm install autoprefixer -g 
+
+      - name: Build minified
+        id: build
+        run: |
+            hugo --minify
+            echo ::set-output name=exit_code::$?
+
+    - name: Publish to Cloudflare Pages
+    uses: cloudflare/pages-action@v1
+    with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: tmclo-dev
+        directory: ./public/
+        branch: main
